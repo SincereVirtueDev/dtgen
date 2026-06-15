@@ -1,0 +1,206 @@
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-children {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-top: 24px;
+}
+
+/* Vertical line coming down from parent */
+.tree-children::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid #d1d5db;
+  width: 0;
+  height: 24px;
+  transform: translateX(-50%);
+}
+
+.tree-child {
+  position: relative;
+  padding: 24px 12px 0 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Right side horizontal line */
+.tree-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 24px;
+  border-top: 2px solid #d1d5db;
+}
+
+/* Left side horizontal line and vertical drop down */
+.tree-child::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 24px;
+  border-top: 2px solid #d1d5db;
+  border-left: 2px solid #d1d5db; /* Drop down to child */
+}
+
+/* First child: remove left connector, add border-radius to drop down */
+.tree-child:first-child::before {
+  border: 0 none;
+}
+.tree-child:first-child::after {
+  border-top-left-radius: 8px;
+}
+
+/* Last child: remove right connector (which is actually in ::after), use ::before for vertical drop */
+.tree-child:last-child::after {
+  border: 0 none;
+}
+.tree-child:last-child::before {
+  border-right: 2px solid #d1d5db;
+  border-top-right-radius: 8px;
+}
+
+/* If there's only one child: remove all horizontal lines and curves */
+.tree-child:only-child::before {
+  display: none;
+}
+.tree-child:only-child::after {
+  width: 0;
+  border-top: 0 none;
+  border-left: 2px solid #d1d5db;
+  border-radius: 0;
+}
+
+
+/* ===== Marriage Connector Layout ===== */
+
+/* Đường nối ngang giữa husband axis và wife */
+.marriage-connector {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 60px;
+  height: 48px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.marriage-connector-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d1d5db 0%, #f9a8d4 40%, #f9a8d4 60%, #d1d5db 100%);
+  transform: translateY(-50%);
+}
+
+.marriage-connector-badge {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: white;
+  padding: 2px 4px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.marriage-connector-toggle {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1px 5px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.marriage-connector-toggle:hover {
+  background-color: #f3f4f6;
+}
+
+/* ===== Generation Lane Markers ===== */
+
+.generation-tree-wrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.generation-lanes {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: -100px;
+  top: 0;
+  bottom: 0;
+  width: 88px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.generation-lane {
+  flex: 1;
+  position: relative;
+  min-height: 180px; /* Approximate height per generation row */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.generation-lane-label {
+  position: sticky;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.generation-lane-label-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-weight: 800;
+  font-size: 13px;
+  color: #8b0000;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, rgba(139,0,0,0.08) 0%, rgba(139,0,0,0.03) 100%);
+  padding: 12px 6px;
+  border-radius: 6px;
+  border-left: 3px solid #8b0000;
+  white-space: nowrap;
+}
+
+.generation-lane--even .generation-lane-label-text {
+  color: #5c3a21;
+  border-left-color: #8b5a2b;
+  background: linear-gradient(180deg, rgba(139,90,43,0.08) 0%, rgba(139,90,43,0.03) 100%);
+}
+
+/* Dải nền xen kẽ cho tree content */
+.generation-tree-content {
+  position: relative;
+  flex: 1;
+}

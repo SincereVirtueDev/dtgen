@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1d4ed8;
+  --color-male: #3b82f6;
+  --color-male-light: #eff6ff;
+  --color-female: #ec4899;
+  --color-female-light: #fdf2f8;
+  --color-neutral-bg: #f9fafb;
+  --color-card-border: #e5e7eb;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-neutral-bg);
+    color: #111827;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+}

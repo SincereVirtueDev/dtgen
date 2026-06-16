@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://img.icons8.com/color/96/000000/family-tree.png" alt="DTGen Logo"/>
+  
   <h1>DTGen V2 - Vietnamese Genealogy System</h1>
   <p>Hệ thống quản lý gia phả truyền thống, tích hợp Âm Lịch, Phả đồ thông minh và tự động sinh Phả ký.</p>
 </div>
@@ -66,12 +66,6 @@ Dự án được đóng gói sẵn với Docker, giúp bạn triển khai chỉ
 > - **Username:** `admin`
 > - **Password:** `123456`
 
-## 📸 Ảnh chụp màn hình (Screenshots)
-
-*(Thêm hình ảnh giao diện Landing Page, Phả đồ, Lịch sử vào đây để dự án thêm trực quan)*
-<p align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=Landing+Page+Screenshot" alt="Landing Page"/>
-</p>
 
 ## ☕ Ủng hộ tác giả (Donate)
 
